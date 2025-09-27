@@ -1,8 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .forms import AgentForm
 from .forms import PlayerForm
 from .models import Agent
 from .models import Player
+
+
 def create_agent(request):
     if request.method == 'POST':
         form = AgentForm(request.POST)
@@ -12,6 +14,7 @@ def create_agent(request):
     else:
         form = AgentForm()
         return render(request, 'form.html', {'form': form})
+
 
 def create_player(request):
     if request.method == 'POST':
@@ -23,8 +26,9 @@ def create_player(request):
         form = PlayerForm()
         return render(request, 'form.html', {'form': form})
 
-def update_player(request,b_id):
-    player = Player.objects.get(id=b_id)
+
+def update_player(request, b_id):
+    player = Player.objects.get(pk=b_id)
     if request.method == 'POST':
         form = PlayerForm(request.POST)
         if form.is_valid():
@@ -35,8 +39,8 @@ def update_player(request,b_id):
         return render(request, 'form.html', {'form': form})
 
 
-def update_agent(request,b_id):
-    agent = Agent.objects.get(id=b_id)
+def update_agent(request, b_id):
+    agent = Agent.objects.get(pk=b_id)
     if request.method == 'POST':
         form = AgentForm(request.POST)
         if form.is_valid():
@@ -45,3 +49,13 @@ def update_agent(request,b_id):
     else:
         form = AgentForm()
         return render(request, 'form.html', {'form': form})
+
+
+def delete_agent(request, b_id):
+    agent = Agent.objects.get(pk=b_id).delete()
+    return redirect('/')
+
+
+def delete_player(request, b_id):
+    player = Player.objects.get(pk=b_id).delete()
+    return redirect('/')
