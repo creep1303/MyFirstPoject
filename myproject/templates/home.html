@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valorant List</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <h1>Agent List:</h1>
+    <ol>
+        {% for agent in agents %}
+            <li>{{ agent.name }} - {{ agent.role }}</li>
+        {% empty %}
+            <li>No agents found.</li>
+        {% endfor %}
+    </ol>
+
+    <h1>Player List:</h1>
+    <ol>
+        {% for player in players %}
+            <li>{{ player.name }} - Level {{ player.level }}</li>
+        {% empty %}
+            <li>No players found.</li>
+        {% endfor %}
+    </ol>
+    <hr>
+    <a type="button" href="{% url 'create_agent' %}" >Add a new Agent</a>
+    <br>
+    <a type="submit" href="{% url 'create_player' %}" >Add a new Player</a>
+</body>
+</html>

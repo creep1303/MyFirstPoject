@@ -1,0 +1,20 @@
+body{
+     background:linear-gradient(to bottom, #d9e4d7, #becfbb,#8ea48b,#728a6e);
+    border: black;
+}
+
+
+ button{
+     display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(to right, #728a6e, #2b4336);
+    color: #d9e4d7;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+ }
