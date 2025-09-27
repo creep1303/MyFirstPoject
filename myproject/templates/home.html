@@ -10,7 +10,11 @@
     <h1>Agent List:</h1>
     <ol>
         {% for agent in agents %}
-            <li>{{ agent.name }} - {{ agent.role }}</li>
+            <li>
+                {{ agent.name }} - {{ agent.role }}
+                | <a href="{% url 'update_agent' agent.id %}">Update</a>
+                | <a href="{% url 'delete_agent' agent.id %}">Delete</a>
+            </li>
         {% empty %}
             <li>No agents found.</li>
         {% endfor %}
@@ -19,14 +23,20 @@
     <h1>Player List:</h1>
     <ol>
         {% for player in players %}
-            <li>{{ player.name }} - Level {{ player.level }}</li>
+            <li>
+                {{ player.name }} - Level {{ player.level }}
+                | <a href="{% url 'update_player' player.id %}">Update</a>
+                | <a href="{% url 'delete_player' player.id %}">Delete</a>
+            </li>
         {% empty %}
             <li>No players found.</li>
         {% endfor %}
     </ol>
-    <hr>
-    <a type="button" href="{% url 'create_agent' %}" >Add a new Agent</a>
+
+    <a href="{% url 'create_agent' %}" class="btn"> Add a new Agent</a>
     <br>
-    <a type="submit" href="{% url 'create_player' %}" >Add a new Player</a>
+    <a href="{% url 'create_player' %}" class="btn"> Add a new Player</a>
+
+    <hr>
 </body>
 </html>
